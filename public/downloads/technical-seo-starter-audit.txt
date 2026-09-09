@@ -1,0 +1,9 @@
+ALTHINGSATTENTION DEMO RESOURCE — TECHNICAL SEO STARTER AUDIT
+
+[ ] Confirm important pages are crawlable
+[ ] Review indexing signals and canonicals
+[ ] Check titles, descriptions, and heading structure
+[ ] Test mobile usability and Core Web Vitals
+[ ] Validate structured data where relevant
+[ ] Review internal links and broken links
+[ ] Record issues, owners, and next review date

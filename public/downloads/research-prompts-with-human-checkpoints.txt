@@ -1,0 +1,10 @@
+ALTHINGSATTENTION DEMO RESOURCE — RESEARCH PROMPTS WITH HUMAN CHECKPOINTS
+
+Prompt: List the assumptions in this brief and suggest evidence needed to validate each one.
+Human checkpoint: Verify every source and publication date.
+
+Prompt: Compare three plausible audience interpretations without selecting a winner.
+Human checkpoint: Choose using customer evidence, not model confidence.
+
+Prompt: Identify claims that need legal, brand, or subject-matter review.
+Human checkpoint: Route each claim to the correct reviewer before use.

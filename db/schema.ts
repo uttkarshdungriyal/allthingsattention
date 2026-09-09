@@ -1,0 +1,16 @@
+import { integer, sqliteTable, text, uniqueIndex } from "drizzle-orm/sqlite-core";
+
+export const profiles = sqliteTable("profiles", {
+  id: text("id").primaryKey(), email: text("email").notNull().unique(), name: text("name").notNull(),
+  bio: text("bio").notNull().default(""), skills: text("skills").notNull().default("[]"), interests: text("interests").notNull().default("[]"),
+  photoUrl: text("photo_url"), portfolioUrl: text("portfolio_url"), linkedinUrl: text("linkedin_url"),
+  openToWork: integer("open_to_work", { mode: "boolean" }).notNull().default(false), openToCollab: integer("open_to_collab", { mode: "boolean" }).notNull().default(false),
+  role: text("role").notNull().default("member"), createdAt: integer("created_at", { mode: "timestamp" }).notNull(),
+});
+export const posts = sqliteTable("posts", { id: text("id").primaryKey(), ownerId: text("owner_id").notNull(), category: text("category").notNull(), title: text("title").notNull(), body: text("body").notNull(), status: text("status").notNull().default("published"), createdAt: integer("created_at", { mode: "timestamp" }).notNull(), updatedAt: integer("updated_at", { mode: "timestamp" }).notNull() });
+export const comments = sqliteTable("comments", { id: text("id").primaryKey(), postId: text("post_id").notNull(), ownerId: text("owner_id").notNull(), body: text("body").notNull(), createdAt: integer("created_at", { mode: "timestamp" }).notNull(), updatedAt: integer("updated_at", { mode: "timestamp" }).notNull() });
+export const reactions = sqliteTable("reactions", { id: text("id").primaryKey(), postId: text("post_id").notNull(), ownerId: text("owner_id").notNull(), kind: text("kind").notNull() }, t => [uniqueIndex("reaction_owner_post_kind").on(t.ownerId,t.postId,t.kind)]);
+export const bookmarks = sqliteTable("bookmarks", { id: text("id").primaryKey(), ownerId: text("owner_id").notNull(), itemType: text("item_type").notNull(), itemId: text("item_id").notNull(), createdAt: integer("created_at", { mode: "timestamp" }).notNull() }, t => [uniqueIndex("bookmark_owner_item").on(t.ownerId,t.itemType,t.itemId)]);
+export const resources = sqliteTable("resources", { id: text("id").primaryKey(), title: text("title").notNull(), description: text("description").notNull(), author: text("author").notNull(), topic: text("topic").notNull(), level: text("level").notNull(), type: text("type").notNull(), url: text("url").notNull(), status: text("status").notNull().default("published") });
+export const listings = sqliteTable("listings", { id: text("id").primaryKey(), ownerId: text("owner_id").notNull(), type: text("type").notNull(), title: text("title").notNull(), organization: text("organization").notNull(), location: text("location").notNull(), remote: integer("remote", { mode: "boolean" }).notNull(), applicationMethod: text("application_method").notNull(), postedAt: integer("posted_at", { mode: "timestamp" }).notNull(), isDemo: integer("is_demo", { mode: "boolean" }).notNull().default(false) });
+export const reports = sqliteTable("reports", { id: text("id").primaryKey(), reporterId: text("reporter_id").notNull(), itemType: text("item_type").notNull(), itemId: text("item_id").notNull(), reason: text("reason").notNull(), status: text("status").notNull().default("open"), createdAt: integer("created_at", { mode: "timestamp" }).notNull() });
