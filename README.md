@@ -13,6 +13,10 @@ npm run dev
 
 Open `http://localhost:3000`. Create a production build with `npm run build`.
 
+## Deploy to Vercel
+
+Import this GitHub repository in Vercel and keep the detected framework as **Next.js**. Use the default build command (`npm run build`) and leave the output directory unset so Vercel uses `.next` automatically. No environment variables are required for the current read-only demo.
+
 ## What works in this demo
 
 - Responsive homepage and navigation across Community, Resources, Tools, Showcase, Opportunities, Events, and Dashboard.
